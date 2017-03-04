@@ -92,7 +92,7 @@ Metodo que crea la accion USER_DATA_ERR segun el objeto del response
 */
 export const getUserErr = (err) => {
 	return {
-		type: 'USER_DATA_ERR',
+		type: 'GET_USER_ERR',
 		err
 	};
 };
