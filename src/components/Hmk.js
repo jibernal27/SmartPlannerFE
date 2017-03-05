@@ -3,8 +3,8 @@ import axios from 'axios';
 //TODO url Back-End
 const ROOT_URL = "";
 
-class Homework extends Component {
-
+let Hmk = (userId, hmk, loading) => {
+  /*
   deleteHmk() {
     axios.delete(ROOT_URL+"/usuario/:id/hmks/:id_h").then(response => {
         //TODO mensaje de exito de la operación o de error
@@ -18,14 +18,15 @@ class Homework extends Component {
     }).then(response => {
         //TODO mensaje de exito de la operación o de error
       })
-  }
+  }*/ //--> Movidos a containers/HmkList
 
-  render(){
+  
     return (
       //TODO estructura de un elemento tarea
-        <div><img src="https://upload.wikimedia.org/wikipedia/en/1/1d/Page_Under_Construction.png" alt="under_construction"/> </div>
+        <div>{console.log(userId)}
+          
+        </div>
     )
-  }
 }
 
-export default Homework;
+export default Hmk;

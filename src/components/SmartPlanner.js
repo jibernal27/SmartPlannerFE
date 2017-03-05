@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import Homework from './homework';
+import VisibleHmkList from '../containers/VisibleHmkList';
+import UserBar from '../containers/UserBar';
 
 //TODO Poner back en heroku para poder obtner url
 const ROOT_URL = "";
 
-class App extends Component {
+class SmartPlanner extends Component {
   constructor(props) {
     super(props);
 
@@ -43,9 +44,13 @@ class App extends Component {
   render() {
     return(
       //TODO creación de plantilla para mostrar lista de tareas-
-      <div><img src="https://upload.wikimedia.org/wikipedia/en/1/1d/Page_Under_Construction.png" alt="under_construction"/> </div>
+      <div>
+        <UserBar />
+        <VisibleHmkList />
+      <img src="https://upload.wikimedia.org/wikipedia/en/1/1d/Page_Under_Construction.png" alt="under_construction"/>
+      </div>
     )
   }
 }
 
-export default App;
+export default SmartPlanner;

@@ -59,7 +59,7 @@ export const updateHmk = (userId, hmk) => {
   //retornar putHmkOk() o putHmkErr() segun el caso
 };
 
-export const deleteHmk = (id) => {
+export const deleteHmk = (userId, hmkId) => {
 	axios.delete(ROOT_URL+"/users/:id/hmks/:id_h").then(response => {
         //TODO mensaje de exito de la operación o de error
     });

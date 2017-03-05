@@ -1,0 +1,21 @@
+import React, {Component} from 'react';
+import axios from 'axios';
+import NavBar from './NavBar';
+import Login from './Login';
+//TODO url Back-End
+const ROOT_URL = "";
+
+class UserAdmin extends Component {
+
+	render(){
+		return (
+      //TODO estructura de un elemento tarea
+      <div>
+      	<NavBar />
+      	<Login />
+      </div>
+      );//Verificar si se muestra el login
+	}
+}
+
+export default UserAdmin;
