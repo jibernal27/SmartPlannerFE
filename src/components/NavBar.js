@@ -34,6 +34,7 @@ class NavBar extends Component {
     <div className="navbar-collapse collapse" id="myNavbar">
       <ul className="nav navbar-nav navbar-right">
         <li><a href="#" onClick={this.toggleLogin}><span className="glyphicon glyphicon-log-in"></span> Cambiar Usuario</a></li>
+        <li>Crear Tarea</li>
       </ul>
     </div>
   </div>

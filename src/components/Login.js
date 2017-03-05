@@ -5,10 +5,6 @@ class Login extends Component {
 
 	constructor(props){
 		super(props);
-		this.state = {
-			show: this.props.show
-		}
-		console.log(props);
 		
 	}
 

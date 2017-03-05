@@ -13,7 +13,7 @@ class HmkList extends Component {
 		<div className='row'>
 			<div className='row'>
 				<div className='col-xs-12'>
-					<h1>¡Hola {this.props.state.user.username}}!</h1>
+					<h1>¡Hola {this.props.state.user && this.props.state.user.username}}!</h1>
 					<p>Estas son las tareas que tienes.</p>
 				</div>	
 			</div>

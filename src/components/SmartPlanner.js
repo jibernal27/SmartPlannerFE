@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import HmkList from './HmkList';
+import HmkCreateEdit from './HmkCreateEdit';
 import NavBar from './NavBar';
 import Login from './Login';
 import * as api from '../api';
@@ -33,9 +34,10 @@ class SmartPlanner extends Component {
     return(
       //TODO creación de plantilla para mostrar lista de tareas-
       <div>
-        <WrappedLogin setUser={this.setUser}/>
+        <WrappedLogin />
         <WrappedNavBar />
         <WrappedHmkList />
+        <HmkCreateEdit />
       </div>
     )
   }

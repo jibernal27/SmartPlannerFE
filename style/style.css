@@ -1,3 +1,20 @@
+input[type=time]::-webkit-datetime-edit-ampm-field {
+   display: none;
+ }
+
+ .hmk-edit-container {
+ 	border: 1px solid #058ceb;
+ 	border-radius: 10px;
+ 	padding: 25px;
+ }
+
+ .hmk-edit-container input[type=radio] {
+ 	width: 5%;
+ }
+
+.hmk-edit-container input, .hmk-edit-container textarea {
+   	width: 100%;
+}
 
 .logo_img {
 	 margin-top: -15px;
