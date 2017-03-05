@@ -63,9 +63,10 @@ class SmartPlanner extends Component {
       <div>
         <WrappedLogin getUser={this.getUser} setUser={this.setUser} user={this.state.user} login={this.state.login}/>
         <WrappedNavBar postHmk={this.postHmk} toggleLogin={(loginState) => {this.setState({login: loginState})}}/>
-
+        <div className="row">
         <WrappedHmkList user={this.state.user} hmkList = {this.state.hmks}/>
         <WrappedFilter updateQuery={this.updateQuery}/>
+      </div>
       </div>
     )
   }
