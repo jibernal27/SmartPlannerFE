@@ -140,5 +140,17 @@ export const toggleEditAddHmk = (hmk) => {
 export const toggleLoginView = () => {
 	return {
 		type: 'TOGGLE_LOGIN_VIEW'
-	}
+	};
 };
+
+export const toggleUserLoading = () => {
+	return {
+		type: 'TOGGLE_USER_LOADING'
+	};
+}
+
+export const toggleHmkLoading = () => {
+	return {
+		type: 'TOGGLE_HMK_LOADING'
+	};
+}
