@@ -154,3 +154,9 @@ export const toggleHmkLoading = () => {
 		type: 'TOGGLE_HMK_LOADING'
 	};
 }
+
+export const toggleNewHmkLoading = () => {
+	return {
+		type: 'TOGGLE_NEW_HMK_LOADING'
+	};
+}

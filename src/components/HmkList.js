@@ -1,13 +1,21 @@
-import React, { PropTypes } from 'react'
-import Hmk from './Hmk'
+import React, { Component } from 'react';
+import Hmk from './Hmk';
 
-const HmkList = ({ userId, hmkList, loading, deleteHmk, editHmk }) => (
-  <ul>
-    <li>weno al menos ya sale</li>
-    {loading}
-  </ul>
-)
+class HmkList extends Component {
+	
+	constructor(props){
+		super(props);
+	}
 
+	render(){return (
+		<ul>
+		<li>weno al menos ya sale</li>
+		<li>{this.props.loading}</li>
+		</ul>
+		)
+	}
+}
+/*
 HmkList.propTypes = {
   userId: PropTypes.object,
   hmkList: PropTypes.arrayOf(PropTypes.object),
@@ -15,5 +23,5 @@ HmkList.propTypes = {
   deleteHmk: PropTypes.func,
   editHmk: PropTypes.func
 };
-
+*/
 export default HmkList;

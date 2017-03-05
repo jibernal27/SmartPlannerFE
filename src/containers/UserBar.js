@@ -15,6 +15,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     login: (username) => {
+      dispatch(actions.)
       dispatch(api.getUser(username));
     },
     showEditUser: (user) => {

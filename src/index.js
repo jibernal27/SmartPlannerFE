@@ -23,5 +23,4 @@ ReactDOM.render(
   </Provider>
   , document.querySelector('.container'));
 */
-console.log('hola');
 ReactDOM.render(<SmartPlanner />, document.querySelector('.container'));

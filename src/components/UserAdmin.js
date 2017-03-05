@@ -9,7 +9,7 @@ class UserAdmin extends Component {
 
 	render(){
 		return (
-      //TODO estructura de un elemento tarea
+      //TODO estructura de barra de navegacion y ventana flotante de login
       <div>
       	<NavBar />
       	<Login />

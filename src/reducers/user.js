@@ -3,7 +3,7 @@ const user = (state={
 	login_view: true,
 	user_edit_view: false,
 	actual: {}
-}, action) =>{
+}, action={type:'non'}) =>{
 	switch (action.type) {
 		case 'TOGGLE_EDIT_USER':
 		case 'USER_POST_OK':
