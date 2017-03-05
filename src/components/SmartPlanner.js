@@ -25,7 +25,7 @@ class SmartPlanner extends Component {
       hmkEditor: 'hidden',
       user: {'user_name':''}
     }
-    
+
   }
 
   getUser = (username, callback) => { api.getUser(username, callback)};
@@ -49,7 +49,7 @@ class SmartPlanner extends Component {
         <WrappedLogin getUser={this.getUser} setUser={this.setUser} user={this.state.user} login={this.state.login}/>
         <WrappedNavBar postHmk={this.postHmk} toggleLogin={(loginState) => {this.setState({login: loginState})}}/>
         <WrappedHmkList user={this.state.user} hmkList = {this.state.hmks}/>
-
+        <WrappedFilter />
       </div>
     )
   }
