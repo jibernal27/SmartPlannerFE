@@ -9,12 +9,18 @@
 	background-repeat: repeat-x;
 	margin-top: 15px;
 }
+<<<<<<< HEAD
 
 .navbar-default .navbar-nav>li>a {
     color: #fff;
 }
 
+.login h1 {
+	width: 100%;
+}
+
 .login {
+	text-align: center;
 	color: white;
 	position: fixed;
 	width: 100%;
@@ -43,6 +49,11 @@
 	-o-transition: background-color 0.5s, color 0.5s;
 	transition: background-color 0.5s, color 0.5s;
 
+}
+
+.login-logo {
+	height: 500px;
+	padding-top: 50px;
 }
 
 .login-options {
