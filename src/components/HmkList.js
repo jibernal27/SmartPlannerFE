@@ -8,7 +8,7 @@ class HmkList extends Component {
 		console.log(this);
 		console.log(this.props.hmkList);
 	return (
-		<div className='row'>
+		<div className='col-xs-10'>
 			<div className='row'>
 				<div className='col-xs-12'>
 					<h1>¡Hola {this.props.user.user_name}!</h1>

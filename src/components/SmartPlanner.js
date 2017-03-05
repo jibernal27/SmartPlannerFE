@@ -23,7 +23,9 @@ class SmartPlanner extends Component {
       hmks : [],
       login: 'show',
       hmkEditor: 'hidden',
-      user: {'user_name':''}
+      user: {'user_name':''},
+      category: 'history',
+      order: 'priorized'
     }
 
   }
@@ -33,13 +35,26 @@ class SmartPlanner extends Component {
   getHmks = (userId, category, order, callback) => { api.getHmks(userId, category, order, callback)};
 
   setUser = ( obj ) => {
-    this.getHmks(obj[0]._id, '', '', (hmks)=>{ //se estan pidiendo inicialmente todas las tareas
+    this.getHmks(obj[0]._id, this.state.category, this.state.order, (hmks)=>{ //se estan pidiendo inicialmente todas las tareas
         console.log('tareas');
         console.log(hmks);
         this.setState({login:'hidden', user:obj[0], hmks: hmks});
       });
   }
 
+  /*Actualiza las tareas teniendo en cuenta parametros de filtro cambiados*/
+  updateQuery = (query) => {
+    var userId = this.state.user._id;
+    var category = query.category || this.state.category;
+    var order = query.order || this.state.order;
+    this.setState({category:category,
+                   order:order});
+    this.getHmks(userId, category, order, (hmks)=>{
+        console.log('tareas actualizadas por filtro');
+        console.log(hmks);
+        this.setState({hmks: hmks});
+      });
+  }
 
   render() {
     console.log('SP');
@@ -48,8 +63,9 @@ class SmartPlanner extends Component {
       <div>
         <WrappedLogin getUser={this.getUser} setUser={this.setUser} user={this.state.user} login={this.state.login}/>
         <WrappedNavBar postHmk={this.postHmk} toggleLogin={(loginState) => {this.setState({login: loginState})}}/>
+
         <WrappedHmkList user={this.state.user} hmkList = {this.state.hmks}/>
-        <WrappedFilter />
+        <WrappedFilter updateQuery={this.updateQuery}/>
       </div>
     )
   }
