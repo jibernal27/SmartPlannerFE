@@ -12,7 +12,6 @@ class UserAdmin extends Component {
       //TODO estructura de barra de navegacion y ventana flotante de login
       <div>
       	<NavBar />
-      	<Login />
       </div>
       );//Verificar si se muestra el login
 	}
