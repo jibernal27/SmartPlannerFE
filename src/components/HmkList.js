@@ -21,10 +21,9 @@ class HmkList extends Component {
 				</div>
 			</div>
 			<div className='row'>
-
-			{/* { this.props.hmkList.map(hmk => {
-      			return <Hmk className="hmk" key={hmk._id} />
-    		})} */}
+			{ this.props.hmkList.map(hmk => {
+      			return <Hmk className="hmk" key={hmk._id} hmk={hmk} />
+    		})}
 		</div>
 		</div>
 		);

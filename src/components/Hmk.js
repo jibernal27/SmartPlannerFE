@@ -14,8 +14,10 @@ class Hmk extends Component {
 
     console.log('Hmk');
     console.log(this);
+    var limit = this.props.hmk.limit_date,
+    date = (new Date(limit)).toString();
+
     return (
-      //TODO estructura de un elemento tarea
       <div className="hmk-container">
         <div className="row">
           <div className="col-xs-6">
@@ -23,8 +25,9 @@ class Hmk extends Component {
             <p>{this.props.hmk.description}</p>
           </div>
           <div className="col-xs-6">
-            <h3>{new Date(this.props.hmk.limit_date)}</h3>
-            <p>{this.props.hmk.description}</p>
+
+          <h3>{date}</h3>
+            <p>{this.props.hmk.done_percentage}</p>
           </div>
         </div>
         <div className="row">
