@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import HmkList from './HmkList';
 import UserAdmin from './UserAdmin';
+import Login from './Login';
 import * as api from '../api';
 
 //TODO Poner back en heroku para poder obtner url
@@ -18,10 +19,13 @@ class SmartPlanner extends Component {
     }
   }
 
+  
+
   render() {
     return(
       //TODO creación de plantilla para mostrar lista de tareas-
       <div>
+        <Login />
         <UserAdmin />
         <HmkList />
       </div>

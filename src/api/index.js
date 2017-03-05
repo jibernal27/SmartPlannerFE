@@ -1,7 +1,7 @@
 import axios from 'axios';
 import * as actions from '../actions';
 
-const ROOT_URL = "https://smartplannerbe.herokuapp.com/";
+const ROOT_URL = "https://smartplannerbe.herokuapp.com";
 
 export const getUser = (username, callback) => {
     axios.get(ROOT_URL+ "/users?username=" + username)
