@@ -4,11 +4,6 @@ import * as api from '../api';
 //TODO url Back-End
 
 class Hmk extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  deleteHmk = api.deleteHmk;
 
   render() {
 

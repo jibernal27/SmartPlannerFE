@@ -3,11 +3,6 @@ import Hmk from './Hmk';
 
 class HmkList extends Component {
 
-	constructor(props){
-		super(props);
-		console.log(props.state.user);
-	}
-
 	render(){
 		console.log('HmkList');
 		console.log(this);
