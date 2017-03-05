@@ -4,20 +4,31 @@ import { Navbar } from 'react-bootstrap';
 import { NavItem } from 'react-bootstrap';
 import { MenuItem } from 'react-bootstrap';
 import { NavDropdown } from 'react-bootstrap';
+import HmkCreateEdit from './HmkCreateEdit';
 
 class NavBar extends Component {
 
   constructor(props) {
     super(props);
 
+    this.state = {
+      show: 'hidden'
+    }
   }
 
   toggleLogin = () => {
-    this.props.setState({login:'show', user:{username:''}, hmks:[]});
+    this.props.setState({login:'show'});
+  }
+
+  toggleAddHmk = () => {
+    this.setState({show:'visible'});
   }
 
 	render() {
+    console.log('navbar');
+    console.log(this);
 		return(
+      <div>
 <nav className="navbar navbar-default">
   <div className="container-fluid">
     <div className="navbar-header">
@@ -33,12 +44,14 @@ class NavBar extends Component {
     </div>
     <div className="navbar-collapse collapse" id="myNavbar">
       <ul className="nav navbar-nav navbar-right">
+        <li><a href="#" onClick={this.toggleAddHmk}>Crear Tarea</a></li>
         <li><a href="#" onClick={this.toggleLogin}><span className="glyphicon glyphicon-log-in"></span> Cambiar Usuario</a></li>
-        <li>Crear Tarea</li>
       </ul>
     </div>
   </div>
 </nav>
+<HmkCreateEdit show={this.state.show}/>
+</div>
       );
 
 	}

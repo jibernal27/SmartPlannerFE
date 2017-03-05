@@ -33,10 +33,20 @@ class HmkCreateEdit extends Component {
     this.setState({[e.target.name]: Number(e.target.value)});
   };
 
+  getAction = () => {
+    if(this.props.hmk) return 'Edita';
+    return 'Agrega';
+  }
+
   render() {
     return (
       //TODO estructura de un elemento tarea
-      <div className="hmk-edit-container">
+      <div className={"hmk-edit-container "+this.props.show}>
+        <div className="row">
+        <div className="col-xs-12">
+        <h3>{this.getAction()} una tarea</h3>
+        </div>
+        </div>
         <form>
 
           <div className="form-group row">

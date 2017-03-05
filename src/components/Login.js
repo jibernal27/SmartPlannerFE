@@ -5,7 +5,11 @@ class Login extends Component {
 
 	constructor(props){
 		super(props);
-		
+		this.state = {
+			show: this.props.show
+		}
+		console.log(props);
+
 	}
 
 	getUser = (username, callback) => { api.getUser(username, callback)};
@@ -14,13 +18,17 @@ class Login extends Component {
 
 	setUser = ( obj ) => {
 
-		this.props.setState({login:'hidden', user:obj[0]});
-		this.getHmks(this.props.state.user._id, 'not_finished', 'priorized', (obj)=>{
-			this.props.setState({hmks: obj});
+		this.props.setState({login:'hidden'});
+		this.getHmks(obj[0]._id, '', '', (hmks)=>{ //se estan pidiendo inicialmente todas las tareas
+			console.log('tareas');
+			console.log(hmks);
+			this.props.login({login:'hidden', user:obj[0], hmks: hmks});
 		});
 	}
 
 	render() {
+	    console.log('login');
+	    console.log(this);
             return(
       <div className={this.props.state.login+' login'}>
       <div className='row'>

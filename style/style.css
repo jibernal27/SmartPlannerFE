@@ -6,6 +6,15 @@ input[type=time]::-webkit-datetime-edit-ampm-field {
  	border: 1px solid #058ceb;
  	border-radius: 10px;
  	padding: 25px;
+ 	position: fixed;
+ 	width: 75%;
+ 	background-color: white;
+ 	z-index: 3;
+ }
+
+ .hmk-edit-container h3{
+ 	margin-top: 0;
+ 	margin-bottom: 30px;
  }
 
  .hmk-edit-container input[type=radio] {
