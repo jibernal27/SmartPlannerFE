@@ -11,6 +11,9 @@ class Hmk extends Component {
   deleteHmk = api.deleteHmk;
 
   render() {
+
+    console.log('Hmk');
+    console.log(this);
     return (
       //TODO estructura de un elemento tarea
       <div className="hmk-container">

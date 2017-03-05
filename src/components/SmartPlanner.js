@@ -22,20 +22,22 @@ class SmartPlanner extends Component {
       //posiblemente lista de tareas y una tarea actual seleccionada y el usuario actual
       hmks : [],
       login: 'show',
-      user: {},
-      username: ''
+      user: {'user_name':''}
     }
-    this.props.setState({user:{username:''}});
+    this.props.setState({user:{user_name:''}});
     console.log(this.props.state.username);
   }
 
   render() {
+    console.log('SP');
+    console.log(this);
     return(
       //TODO creación de plantilla para mostrar lista de tareas-
+
       <div>
-        <WrappedLogin setUser={this.setUser}/>
+        <WrappedLogin login= {(state) => {this.setState(state)} } user={this.state.user}/>
         <WrappedNavBar />
-        <WrappedHmkList />
+        <WrappedHmkList user={this.state.user} hmkList = {this.state.hmks}/>
       </div>
     )
   }

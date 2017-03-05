@@ -13,10 +13,12 @@ class NavBar extends Component {
   }
 
   toggleLogin = () => {
-    this.props.setState({login:'show', user:{username:''}, hmks:[]});
+    this.props.setState({login:'show'});
   }
 
 	render() {
+    console.log('navbar');
+    console.log(this);
 		return(
 <nav className="navbar navbar-default">
   <div className="container-fluid">
