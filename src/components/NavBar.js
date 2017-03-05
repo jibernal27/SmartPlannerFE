@@ -7,6 +7,15 @@ import { NavDropdown } from 'react-bootstrap';
 
 class NavBar extends Component {
 
+  constructor(props) {
+    super(props);
+
+  }
+
+  toggleLogin = () => {
+    this.props.setState({login:'show', user:{username:''}, hmks:[]});
+  }
+
 	render() {
 		return(
 <nav className="navbar navbar-default">
@@ -24,8 +33,7 @@ class NavBar extends Component {
     </div>
     <div className="navbar-collapse collapse" id="myNavbar">
       <ul className="nav navbar-nav navbar-right">
-      	<li><a href="#"><span className="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="#"><span className="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li><a href="#" onClick={this.toggleLogin}><span className="glyphicon glyphicon-log-in"></span> Cambiar Usuario</a></li>
       </ul>
     </div>
   </div>

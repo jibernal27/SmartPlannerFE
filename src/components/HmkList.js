@@ -5,14 +5,26 @@ class HmkList extends Component {
 	
 	constructor(props){
 		super(props);
+		console.log(props.state.user);
 	}
 
-	render(){return (
-		<ul>
-		<li>weno al menos ya sale</li>
-		<li>{this.props.loading}</li>
-		</ul>
-		)
+	render(){
+	return (
+		<div className='row'>
+			<div className='row'>
+				<div className='col-xs-12'>
+					<h1>¡Hola {this.props.state.user.username}}!</h1>
+					<p>Estas son las tareas que tienes.</p>
+				</div>	
+			</div>
+			<div className='row'>
+		
+			{this.props.state.hmks && this.props.state.hmks.map(hmk => (
+      			<Hmk className="hmk" key={hmk._id} />
+    		))}
+		</div>
+		</div>
+		);
 	}
 }
 /*

@@ -4,6 +4,9 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 
 import SmartPlanner from './components/SmartPlanner';
+
+import {gs} from './GlobalState';
+const WrappedSP = gs(SmartPlanner);
 //import reducers from './reducers';
 /*
 const logger = store => next => action => {
@@ -23,4 +26,4 @@ ReactDOM.render(
   </Provider>
   , document.querySelector('.container'));
 */
-ReactDOM.render(<SmartPlanner />, document.querySelector('.container'));
+ReactDOM.render(<WrappedSP />, document.querySelector('.container'));

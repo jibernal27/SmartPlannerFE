@@ -27,7 +27,7 @@ export const updateUser = (userId, user, callback) => {
 export const getHmks = (userId, category, order, callback) => {
     axios.get(ROOT_URL+ "/users/"+userId+"/hmks?category="+category+"&order="+order)
     .then(response => {
-      callback(action.getHmks(response.data));
+      callback(response.data);
     }).catch(err =>{
       callback(err.message);
     });
