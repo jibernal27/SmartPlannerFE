@@ -4,6 +4,7 @@ import { Navbar } from 'react-bootstrap';
 import { NavItem } from 'react-bootstrap';
 import { MenuItem } from 'react-bootstrap';
 import { NavDropdown } from 'react-bootstrap';
+import HmkCreateEdit from './HmkCreateEdit';
 
 class NavBar extends Component {
 
@@ -11,6 +12,7 @@ class NavBar extends Component {
     console.log('navbar');
     console.log(this);
 		return(
+      <div>
 <nav className="navbar navbar-default">
   <div className="container-fluid">
     <div className="navbar-header">
@@ -26,11 +28,15 @@ class NavBar extends Component {
     </div>
     <div className="navbar-collapse collapse" id="myNavbar">
       <ul className="nav navbar-nav navbar-right">
+        <li><a href="#" onClick={() => {this.props.toggleAddHmk('show')}}>Crear Tarea</a></li>
         <li><a href="#" onClick={() => {this.props.toggleLogin('show')}}><span className="glyphicon glyphicon-log-in"></span> Cambiar Usuario</a></li>
       </ul>
     </div>
   </div>
-</nav>
+  </nav>
+  <HmkCreateEdit show={this.props.addHmk} modalAction={this.props.postHmk} toggleModal={this.props.toggleAddHmk}/>
+  </div>
+
       );
 
 	}

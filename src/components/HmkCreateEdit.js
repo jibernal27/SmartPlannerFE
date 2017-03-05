@@ -38,6 +38,7 @@ class HmkCreateEdit extends Component {
     return 'Agrega';
   }
 
+
   render() {
     return (
       //TODO estructura de un elemento tarea
@@ -95,6 +96,12 @@ class HmkCreateEdit extends Component {
                       onChange={this.setImportance}  /> Alta
 
           </div>
+          </div>
+          <div className="row">
+            <div className="col-md-12">
+              <button className="btn btn-primary" onClick={() => {this.props.modalAction(this.state)}}>Ok</button>
+              <button className="btn btn-danger" onClick={() => {this.props.toggleModal('hidden')}}>Cancelar</button>
+            </div>
           </div>
         </form>
       </div>

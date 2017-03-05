@@ -12,7 +12,7 @@ class Filter extends Component{
 
   render(){
   return(
-    <div className='col-md-4'>
+    <div className='col-md-2'>
 			<div className='row'>
 				<div className='col-xs-12'>
 					<h2>Filtros</h2>
