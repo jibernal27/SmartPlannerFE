@@ -1,67 +1,64 @@
 import axios from 'axios';
 import * as actions from '../actions';
 
-const ROOT_URL = "";
+const ROOT_URL = "https://smartplannerbe.herokuapp.com/";
 
-export const getUser = (username) => {
-    // TODO query params
-    axios.get(ROOT_URL+ "/users?username="+username)
+export const getUser = (username, callback) => {
+    axios.get(ROOT_URL+ "/users?username=" + username)
     .then(response => {
-    	this.setState({
-        //TODO verificación
-        homeworks: response.data
-    })
+      //callback(action.getUserOk(response.data));
+      callback(response.data);
+    }).catch(err => {
+      //callback(action.getUserErr(response.data));
+      callback(err.message);
     });
-    //retornar actions.getUserOk() o actions.getUserErr() segun el caso
+    //return actions.toggleUserLoading();
 };
 
-export const updateUser = (user) => {
-	axios.put(ROOT_URL+"/users/:id/hmks/:id_h",
-	{
-      //TODO creación del cuerpo de la actualización
-  }).then(response => {
-        //TODO mensaje de exito de la operación o de error
+export const updateUser = (userId, user, callback) => {
+	axios.put(ROOT_URL+"/users/" + userId, user).then(response => {
+        callback(response.data);
+    }).catch(err => {
+      callback(err.message);
     });
-  //retornar actions.putUserOk() o actions.putHmkErr() segun el caso
+    //return actions.toggleUserLoading();
 };
 
-export const getHmks = (userId, filter) => {
-    // TODO query params
-    axios.get(ROOT_URL+ "/users/:id/hmks")
+export const getHmks = (userId, category, order, callback) => {
+    axios.get(ROOT_URL+ "/users/"+userId+"/hmks?category="+category+"&order="+order)
     .then(response => {
-    	this.setState({
-        //TODO verificación
-        homeworks: response.data
-    })
+      callback(action.getHmks(response.data));
+    }).catch(err =>{
+      callback(err.message);
     });
-    //retornar actions.getHmkOk() o actions.getHmkErr() segun el caso
-};
+    };
+    //return actions.toggleHmkLoading()};
 
-export const addHmkToUser = (userId) => {
-    //TODO verificar estructura obtención de queryparams
-    axios.post(ROOT_URL+ "/users/:id/hmks", {
-      // TODO creación de cuerpo de post con caracteristicas de la tarea
-  })
+export const addHmkToUser = (userId, hmk, callback) => {
+    axios.post(ROOT_URL+ "/users/"+userId+"/hmks", hmk)
     .then(response => {
-      //TODO revisión de respuesta. Por ahora obtener las tareas del usuario
-      this.getHmks();
+      callback(response.data);
+  }).catch(err => {
+      callback(err.message);
   });
     //retornar actions.postHmkOk() o actions.postHmkErr() segun el caso
 };
 
-export const updateHmk = (userId, hmk) => {
-	axios.put(ROOT_URL+"/users/:id/hmks/:id_h",
-	{
-      //TODO creación del cuerpo de la actualización
-  }).then(response => {
-        //TODO mensaje de exito de la operación o de error
-    });
-  //retornar putHmkOk() o putHmkErr() segun el caso
+export const updateHmk = (userId, hmkId, hmk, callback) => {
+	axios.put(ROOT_URL+"/users/"+userId+"/hmks/"+hmkId, hmk)
+    .then(response => {
+      callback(response.data);
+  }).catch(err => {
+      callback(err.message);
+  });
+  //return actions.toggleHmkLoading();
 };
 
-export const deleteHmk = (userId, hmkId) => {
-	axios.delete(ROOT_URL+"/users/:id/hmks/:id_h").then(response => {
-        //TODO mensaje de exito de la operación o de error
-    });
-  //retornar deleteHmkOk() o deleteHmkErr() segun el caso
+export const deleteHmk = (userId, hmkId, callback) => {
+	axios.delete(ROOT_URL+"/users/"+userId+"/hmks/"+hmkId).then(response => {
+        callback(response.data);
+    }).catch(err => {
+      callback(err.message);
+  });
+    //return actions.toggleHmkLoading();
 };
