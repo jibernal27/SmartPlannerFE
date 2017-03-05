@@ -10,6 +10,7 @@ input[type=time]::-webkit-datetime-edit-ampm-field {
  	width: 75%;
  	background-color: white;
  	z-index: 3;
+ 	box-shadow: 0px 12px 54px grey;
  }
 
  .hmk-edit-container h3{
@@ -91,15 +92,19 @@ input[type=time]::-webkit-datetime-edit-ampm-field {
 .visible, .visible *{
 	opacity: 1;
 	visibility: visible;
-	-webkit-transition: visibility 2s;
-	-o-transition: visibility 2s;
-	transition: visibility 2s;
+	-webkit-transition: visibility 2s, opacity 1s;
+	-o-transition: visibility 2s, opacity 1s;
+	transition: opacity 1s;
 }
 
 .hidden, .hidden *{
 	opacity: 0;
 	visibility: hidden;
-	-webkit-transition: visibility 2s, opacity 1s;
-	-o-transition: visibility 2s opacity 1s;
-	transition: visibility 2s opacity 1s;
+	-webkit-transition: opacity 1s;
+	-o-transition: opacity 1s;
+	transition: opacity 1s;
+}
+
+.hmk-form-btn {
+	margin-right: 5px;
 }

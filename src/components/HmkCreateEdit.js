@@ -36,7 +36,15 @@ class HmkCreateEdit extends Component {
   getAction = () => {
     if(this.props.hmk) return 'Edita';
     return 'Agrega';
-  }
+  };
+
+  addEditHmk = () => {
+    this.props.addCreateHmk(Object.assign({}, this.state));
+  };
+
+  close = ()=> {
+    this.props.close();
+  };
 
   render() {
     return (
@@ -95,6 +103,14 @@ class HmkCreateEdit extends Component {
                       onChange={this.setImportance}  /> Alta
 
           </div>
+          </div>
+          <div className="form-group row">
+            <div className="col-xs-6">
+            </div>
+            <div className="col-xs-6">
+            <button className="btn btn-default hmk-form-btn" onClick={this.close}>Cancelar</button>
+            <button className="btn btn-primary hmk-form-btn" onClick={this.addEditHmk}>Aceptar</button>
+            </div>
           </div>
         </form>
       </div>

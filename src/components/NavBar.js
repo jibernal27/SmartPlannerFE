@@ -18,10 +18,14 @@ class NavBar extends Component {
 
   toggleLogin = () => {
     this.props.setState({login:'show'});
-  }
+  };
 
   toggleAddHmk = () => {
     this.setState({show:'visible'});
+  };
+
+  closeAddHmk = () => {
+    this.setState({show:'hidden'});
   }
 
 	render() {
@@ -50,7 +54,7 @@ class NavBar extends Component {
     </div>
   </div>
 </nav>
-<HmkCreateEdit show={this.state.show}/>
+<HmkCreateEdit show={this.state.show} addCreateHmk={this.props.postHmk} close={this.closeAddHmk}/>
 </div>
       );
 
