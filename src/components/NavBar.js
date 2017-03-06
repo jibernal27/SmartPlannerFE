@@ -5,11 +5,16 @@ import { NavItem } from 'react-bootstrap';
 import { MenuItem } from 'react-bootstrap';
 import { NavDropdown } from 'react-bootstrap';
 import HmkCreateEdit from './HmkCreateEdit';
+import UserEdit from './UserEdit';
 
 class NavBar extends Component {
 
   resetCreateForm = (callback) => {
-    this.reset = (obj) => {callback(obj);}
+    this.resetHmk = (obj) => {callback(obj);}
+  };
+
+  resetUserForm = (callback) => {
+    this.resetUser = (obj) => {callback(this.props.user);}
   };
 
 	render() {
@@ -33,7 +38,11 @@ class NavBar extends Component {
     <div className="navbar-collapse collapse" id="myNavbar">
       <ul className="nav navbar-nav navbar-right">
         <li><a href="#" onClick={() => {
-          this.reset();
+          this.resetUser();
+          this.props.toggleEditUser('show');
+        }}>Editar Usuario</a></li>
+        <li><a href="#" onClick={() => {
+          this.resetHmk();
           this.props.toggleAddHmk('show');
         }}>Crear Tarea</a></li>
         <li><a href="#" onClick={() => {
@@ -45,6 +54,7 @@ class NavBar extends Component {
   </div>
   </nav>
   <HmkCreateEdit show={this.props.addHmk} modalAction={this.props.postHmk} toggleModal={this.props.toggleAddHmk} reset={this.resetCreateForm}/>
+  <UserEdit user={this.props.user} show={this.props.editUser} modalAction={this.props.postUser} toggleModal={this.props.toggleEditUser} reset={this.resetUserForm}/>
   </div>
       );
 

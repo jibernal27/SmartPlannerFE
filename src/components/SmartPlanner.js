@@ -15,6 +15,7 @@ class SmartPlanner extends Component {
       hmks : [],
       login: 'show',
       createEditShow: 'hidden',
+      userEditShow: 'hidden',
       hmkEditor: 'hidden',
       user: {'user_name':''},
       category: 'history',
@@ -83,15 +84,27 @@ class SmartPlanner extends Component {
     });
   }
 
+  /*Agregar tarea al usurio actual*/
+  postUser = (user) => {
+    var userId = this.state.user._id;
+    api.updateUser(userId, user,(resp) => {
+      console.log('Respuesta post usuario');
+      console.log(resp);
+      this.updateQuery({});
+    });
+  }
+
   render() {
     console.log('SP');
     console.log(this);
     return(
       <div>
         <Login getUser={this.getUser} setUser={this.setUser} user={this.state.user} login={this.state.login}/>
-        <NavBar postHmk={this.postHmk} toggleLogin={(loginState) => {this.setState({login: loginState})}}
+        <NavBar user={this.state.user} postUser={this.postUser} postHmk={this.postHmk} toggleLogin={(loginState) => {this.setState({login: loginState})}}
                                        toggleAddHmk={(addState) => {this.setState({createEditShow: addState})}}
-                                        addHmk={this.state.createEditShow}/>
+                                        addHmk={this.state.createEditShow}
+                                        toggleEditUser={(addState)=>{this.setState({userEditShow: addState})}}
+                                        editUser={this.state.userEditShow}/>
         <div className="row">
         <HmkList user={this.state.user} hmkList={this.state.hmks} updateHmk={this.updateHmk} deleteHmk={this.deleteHmk}
                                         toggleEditHmk={(addState) => {this.setState({createEditShow: addState})}}/>
