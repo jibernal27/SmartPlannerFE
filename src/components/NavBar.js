@@ -8,25 +8,9 @@ import HmkCreateEdit from './HmkCreateEdit';
 
 class NavBar extends Component {
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      show: 'hidden'
-    }
-  }
-
-  toggleLogin = () => {
-    this.props.setState({login:'show'});
+  resetCreateForm = (callback) => {
+    this.reset = (obj) => {callback(obj);}
   };
-
-  toggleAddHmk = () => {
-    this.setState({show:'visible'});
-  };
-
-  closeAddHmk = () => {
-    this.setState({show:'hidden'});
-  }
 
 	render() {
     console.log('navbar');
@@ -48,14 +32,20 @@ class NavBar extends Component {
     </div>
     <div className="navbar-collapse collapse" id="myNavbar">
       <ul className="nav navbar-nav navbar-right">
-        <li><a href="#" onClick={this.toggleAddHmk}>Crear Tarea</a></li>
-        <li><a href="#" onClick={this.toggleLogin}><span className="glyphicon glyphicon-log-in"></span> Cambiar Usuario</a></li>
+        <li><a href="#" onClick={() => {
+          this.reset();
+          this.props.toggleAddHmk('show');
+        }}>Crear Tarea</a></li>
+        <li><a href="#" onClick={() => {
+          if(this.reset) this.reset();
+          this.props.toggleLogin('show')
+        }}><span className="glyphicon glyphicon-log-in"></span> Cambiar Usuario</a></li>
       </ul>
     </div>
   </div>
-</nav>
-<HmkCreateEdit show={this.state.show} addCreateHmk={this.props.postHmk} close={this.closeAddHmk}/>
-</div>
+  </nav>
+  <HmkCreateEdit show={this.props.addHmk} modalAction={this.props.postHmk} toggleModal={this.props.toggleAddHmk} reset={this.resetCreateForm}/>
+  </div>
       );
 
 	}

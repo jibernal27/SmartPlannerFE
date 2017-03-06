@@ -3,7 +3,7 @@ import axios from 'axios';
 import * as api from '../api';
 //TODO url Back-End
 
-class HmkCreateEdit extends Component {
+class UserEdit extends Component {
   constructor(props) {
     super(props);
     var hmkObj = this.props.hmk || {};

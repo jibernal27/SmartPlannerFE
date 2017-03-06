@@ -3,34 +3,11 @@ import * as api from '../api';
 
 class Login extends Component {
 
-	constructor(props){
-		super(props);
-		this.state = {
-			show: this.props.show
-		}
-		console.log(props);
-
-	}
-
-	getUser = (username, callback) => { api.getUser(username, callback)};
-
-	getHmks = (userId, category, order, callback) => { api.getHmks(userId, category, order, callback)};
-
-	setUser = ( obj ) => {
-
-		this.props.setState({login:'hidden'});
-		this.getHmks(obj[0]._id, '', '', (hmks)=>{ //se estan pidiendo inicialmente todas las tareas
-			console.log('tareas');
-			console.log(hmks);
-			this.props.login({login:'hidden', user:obj[0], hmks: hmks});
-		});
-	}
-
-	render() {
+		render() {
 	    console.log('login');
 	    console.log(this);
             return(
-      <div className={this.props.state.login+' login'}>
+      <div className={this.props.login+' login'}>
       <div className='row'>
       	<img src='./style/imgs/smartPlanner.png' className='login-logo'/>
       </div>
@@ -38,11 +15,11 @@ class Login extends Component {
 	  <div className='col-xs-1 col-md-4'></div>
 	  <div className='col-xs-10 col-md-4'>
 	  	<h2>Seleccione un usuario</h2>
-	  	<button className='btn btn-default' onClick={() => this.getUser('Jose', (obj)=>{
-	  		this.setUser(obj);
+	  	<button className='btn btn-default' onClick={() => this.props.getUser('Jose', (obj)=>{
+	  		this.props.setUser(obj);
 	  	})}>JDF</button>
-	  	<button className='btn btn-default' onClick={() => this.getUser('Daniel', (obj)=>{
-	  		this.setUser(obj);
+	  	<button className='btn btn-default' onClick={() => this.props.getUser('Daniel', (obj)=>{
+	  		this.props.setUser(obj);
 	  	})}>DA</button>
 	  </div>
 	  <div className='col-xs-1 col-md-4'></div>

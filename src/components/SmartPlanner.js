@@ -4,42 +4,100 @@ import HmkList from './HmkList';
 import HmkCreateEdit from './HmkCreateEdit';
 import NavBar from './NavBar';
 import Login from './Login';
+import Filter from './Filter';
 import * as api from '../api';
-import {gs} from '../GlobalState';
-const WrappedLogin = gs(Login);
-const WrappedNavBar = gs(NavBar);
-const WrappedHmkList = gs(HmkList);
-
-//TODO Poner back en heroku para poder obtner url
-const ROOT_URL = "";
-
 
 class SmartPlanner extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      //TODO Establecer variables a tener en cuenta para manejar en el estado
-      //posiblemente lista de tareas y una tarea actual seleccionada y el usuario actual
       hmks : [],
       login: 'show',
+      createEditShow: 'hidden',
       hmkEditor: 'hidden',
-      user: {'user_name':''}
+      user: {'user_name':''},
+      category: 'history',
+      order: 'priorized'
     }
-    this.props.setState({user:{user_name:''}});
-    console.log(this.props.state.username);
+
+  }
+
+  /*obtiene al usurio con username dado*/
+  getUser = (username, callback) => { api.getUser(username, callback)};
+
+  /*Obtiene las tareas con parametros dados*/
+  getHmks = (userId, category, order, callback) => { api.getHmks(userId, category, order, callback)};
+
+  /*establece el nuevo usuario actual*/
+  setUser = ( obj ) => {
+    this.getHmks(obj[0]._id, this.state.category, this.state.order, (hmks)=>{ //se estan pidiendo inicialmente todas las tareas
+        console.log('tareas');
+        console.log(hmks);
+        this.setState({login:'hidden', user:obj[0], hmks: hmks});
+      });
+  }
+
+  /*Actualiza las tareas teniendo en cuenta parametros de filtro cambiados*/
+  updateQuery = (query) => {
+    var userId = this.state.user._id;
+    var category = query.category || this.state.category;
+    var order = query.order || this.state.order;
+    this.setState({category:category,
+                   order:order});
+    this.getHmks(userId, category, order, (hmks)=>{
+        console.log('tareas actualizadas por filtro');
+        console.log(hmks);
+        this.setState({hmks: hmks});
+      });
+  }
+
+  /*Agregar tarea al usurio actual*/
+  postHmk = (hmk) => {
+    var userId = this.state.user._id;
+    api.addHmkToUser(userId, hmk,(resp) => {
+      console.log('Respuesta post tarea');
+      console.log(resp);
+      this.updateQuery({});
+    });
+  }
+
+  /*Elimina una tarea del usuario actual*/
+  deleteHmk = (hmkId) => {
+    var userId = this.state.user._id;
+    api.deleteHmk(userId, hmkId, (resp) => {
+      console.log('Respuesta delete tarea');
+      console.log(resp);
+      this.updateQuery({});
+    });
+  }
+
+  /*Actualiza una tarea*/
+  updateHmk = (hmk) => {
+    var userId = this.state.user._id;
+    var hmkId = hmk._id;
+    api.updateHmk(userId, hmkId, hmk, (resp) => {
+      console.log('Respuesta put tarea');
+      console.log(resp);
+      this.updateQuery({});
+    });
   }
 
   render() {
     console.log('SP');
     console.log(this);
     return(
-      //TODO creación de plantilla para mostrar lista de tareas-
-
       <div>
-        <WrappedLogin login= {(state) => {this.setState(state)} } user={this.state.user}/>
-        <WrappedNavBar postHmk={this.postHmk}/>
-        <WrappedHmkList user={this.state.user} hmkList = {this.state.hmks}/>        
+        <Login getUser={this.getUser} setUser={this.setUser} user={this.state.user} login={this.state.login}/>
+        <NavBar postHmk={this.postHmk} toggleLogin={(loginState) => {this.setState({login: loginState})}}
+                                       toggleAddHmk={(addState) => {this.setState({createEditShow: addState})}}
+                                        addHmk={this.state.createEditShow}/>
+        <div className="row">
+        <HmkList user={this.state.user} hmkList={this.state.hmks} updateHmk={this.updateHmk} deleteHmk={this.deleteHmk}
+                                        toggleEditHmk={(addState) => {this.setState({createEditShow: addState})}}/>
+        <div className="col-md-2"></div>
+        <Filter updateQuery={this.updateQuery}/>
+      </div>
       </div>
     )
   }
