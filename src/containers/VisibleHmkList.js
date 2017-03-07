@@ -4,6 +4,7 @@ import axios from 'axios';
 import {toggleEditAddHmk} from '../actions';
 import * as api from '../api';
 
+  /*  Creo que el uso de constante reduce signifiativamente el desempeño de la aplicación. */
 
   const mapStateToProps = (state) => {
     return {
