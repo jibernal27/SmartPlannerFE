@@ -17,6 +17,7 @@ class Hmk extends Component {
         <div className="row">
           <div className="col-xs-6">
             <h3>{this.props.hmk.name}</h3>
+      {/* No seria más fácil manejar un estado?*/}
             <p>Descripción: {this.props.hmk.description}</p>
           </div>
           <div className="col-xs-6">
