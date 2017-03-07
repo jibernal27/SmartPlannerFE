@@ -7,3 +7,4 @@ En cuanto al backend puedo ver contraseñas lo cual no se si es bueno, el API es
 
  pero al darle cancelar o actualizar a algo me lleva al index. Supongo que es porque no lo han implemntado.  
 
+En algun lado les dije que las constantes eran malas, estoy loco. Son buenas en javascript. 
