@@ -7,6 +7,7 @@ class HmkList extends Component {
 		console.log('HmkList');
 		console.log(this);
 		console.log(this.props.hmkList);
+		{/* Uso de estados*/}
 		var mensaje = '';
 		if (this.props.hmkList.length > 0) mensaje = 'Estas son las tareas que tienes.';
 		else mensaje = 'No tienes tareas con los filtros dados.';
