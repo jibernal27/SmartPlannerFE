@@ -1,0 +1,9 @@
+En general me parece correcto como las cosas se separan, sin embargo hay un monton de código que no entiendo. No se si es porque es para el sprint 2 o porque no les funciono. Se nota como dos personas hicieron cosas distintas, una usaba props y la otra states.
+La jerarquia de los componetes no me parecio fácil de entender sin emabrgo estan separados y sirven un proposito común. 
+
+En conclusión me parecio muy chevere la aplicación.
+Solo trataria de estandarizar el uso de states y eliminar todo el código basura. 
+En cuanto al backend puedo ver contraseñas lo cual no se si es bueno, el API es bastante completa y usa filtros y demas carateristicas para aprovechar a mongodb. En la linea 405 de routes/index.js me suena a lógica que el backend no deberia hacer.
+
+ pero al darle cancelar o actualizar a algo me lleva al index. Supongo que es porque no lo han implemntado.  
+
