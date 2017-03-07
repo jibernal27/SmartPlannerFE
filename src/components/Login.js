@@ -15,6 +15,8 @@ class Login extends Component {
 	  <div className='col-xs-1 col-md-4'></div>
 	  <div className='col-xs-10 col-md-4'>
 	  	<h2>Seleccione un usuario</h2>
+		    {/* El uso de props para compartir información entre modulos me parece que podria llevar a que el resultado no sea el esperado, ya se porque el componente 
+		    no se inicio o por otro motivo.  Por ejemplo no se de donde sale el getUser. Es parte del api?*/}
 	  	<button className='btn btn-default' onClick={() => this.props.getUser('Jose', (obj)=>{
 	  		this.props.setUser(obj);
 	  	})}>JDF</button>
